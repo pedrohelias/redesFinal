@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Chat</title>
+</head>
+<body>
+    <h1>App Chat</h1>
+    <label>Digite seu nome: </label>
+    <input>
+    <br></br>
+    <label>Digite sua mensagem: </label>
+    <input>
+    <button>enviar</button>
+    <div id="mensagem"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/api/mensagem')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('mensagem').innerText = data.mensagem;
+                })
+                .catch(error => console.error('Erro:', error));
+        });
+    </script>
+</body>
+</html>
+ 
